@@ -1,108 +1,76 @@
-# Document Summary
+# 📄 Document Summary Assistant
 
-A modern web application that allows users to upload documents and generate concise summaries from their content.
+A modern, browser-based document summarization application that allows users to upload **PDF documents or scanned images**, extract their text, and generate concise summaries with important key points.
 
-## Features
+The application performs document processing directly in the browser using PDF parsing, OCR, and a custom extractive summarization algorithm — **no external AI API or API key is required**.
 
-* 📄 Upload documents through an easy-to-use interface
-* 📝 Extract text from supported documents
-* 🤖 Generate concise document summaries
-* 📊 Display extracted content and summaries clearly
-* 🎨 Responsive and modern user interface
-* ⚡ Fast development and production build using Vite
-* 🔒 Client-side environment configuration support
+## 🚀 Live Demo
 
-## Tech Stack
+**Live Application:**  
+https://doument-summary-ntavc20rf-khyathis-projects-e0546fce.vercel.app/
 
-* **Frontend:** React, TypeScript
-* **Framework:** TanStack Start
-* **Build Tool:** Vite
-* **Styling:** Tailwind CSS
-* **UI Components:** shadcn/ui
-* **Package Manager:** Bun
-* **Document Processing:** JavaScript/TypeScript utilities
+**GitHub Repository:**  
+https://github.com/khyathi-2006/DoumentSummary
 
-## Project Structure
+---
+
+## ✨ Features
+
+- 📄 Upload PDF, JPG, and PNG documents
+- 🖱️ Drag-and-drop file upload
+- 📁 File picker support
+- 🖼️ Image preview after upload
+- 📊 Display file name and file size
+- 📑 Extract text from PDF documents
+- 🔍 OCR support for scanned images
+- 🤖 Automatic document summarization
+- 📝 Generate Short, Medium, or Long summaries
+- 📌 Extract important key points
+- ⚡ Instant summary regeneration when summary length changes
+- 🔄 Clear processing and loading states
+- ❌ User-friendly error handling
+- 🔁 Retry processing when an error occurs
+- 📱 Responsive interface for desktop and mobile
+- 🔐 No API keys required
+- 🌐 Runs entirely in the browser
+
+---
+
+## 🖥️ How It Works
+
+The application follows a simple document-processing pipeline:
 
 ```text
-DoumentSummary/
-├── public/
-├── src/
-│   ├── components/
-│   ├── hooks/
-│   ├── lib/
-│   └── routes/
-├── .gitignore
-├── bun.lock
-├── bunfig.toml
-├── components.json
-├── package.json
-├── tsconfig.json
-├── vite.config.ts
-└── README.md
-```
-
-## Getting Started
-
-### Prerequisites
-
-Make sure you have installed:
-
-* Node.js
-* Bun
-
-### Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/khyathi-2006/DoumentSummary.git
-```
-
-Move into the project directory:
-
-```bash
-cd DoumentSummary
-```
-
-Install dependencies:
-
-```bash
-bun install
-```
-
-### Run the Development Server
-
-```bash
-bun run dev
-```
-
-The application will be available at the local URL shown in the terminal.
-
-## Build for Production
-
-To create a production build:
-
-```bash
-bun run build
-```
-
-## Preview Production Build
-
-```bash
-bun run start
-```
-
-## Environment Variables
-
-If the application requires environment variables, create a `.env` file in the project root and add the required configuration.
-
-Do not commit sensitive credentials or API keys to GitHub.
-
-## GitHub Repository
-
-[DoumentSummary](https://github.com/khyathi-2006/DoumentSummary)
-
-## License
-
-This project is created for educational and development purposes.
+        Upload Document
+               │
+               ▼
+      ┌─────────────────┐
+      │ File Validation │
+      └────────┬────────┘
+               │
+        ┌──────┴───────┐
+        │              │
+       PDF         JPG / PNG
+        │              │
+        ▼              ▼
+   PDF Parsing        OCR
+   pdfjs-dist       Tesseract.js
+        │              │
+        └──────┬───────┘
+               │
+               ▼
+        Extracted Text
+               │
+               ▼
+       Text Processing
+               │
+               ▼
+    Extractive Summarization
+               │
+        ┌──────┴───────┐
+        │              │
+     Summary       Key Points
+        │              │
+        └──────┬───────┘
+               ▼
+        Display Results
